@@ -1,6 +1,6 @@
 # era_v2_S5
 
-This repository contains Python code for ERAv2 course session 5: PyTorch. The code is organized into three files:
+This repository contains Python code for ERAv2 course session 5: PyTorch assignment. The code is organized into three files:
 
 1. `model.py`: This file contains the model definition , as well as functions for training and testing the model.
 
@@ -19,5 +19,7 @@ This repository contains Python code for ERAv2 course session 5: PyTorch. The co
   - Defines utility functions for loading and preprocessing the dataset (`get_test_train_data` and `test_train_data_loader`).
 
 - `S5.ipynb`:
-  - Demonstrates how to use the functions defined in `model.py` and `utils.py` to train and evaluate the CNN.
-  - Provides a step-by-step guide with explanations and code snippets.
+  - The functions defined in `model.py` and `utils.py` to train and evaluate the CNN are called here.
+  - The notebook starts with necessary imports followed by reading/downloading and loading the test and train data using `utils.py` functions.
+  - Next the data is verified by plotting it.
+  - Afterwards the functions from `model.py` is called to start the model training and test the model and give out the test and train data loss and accuracy plots.
