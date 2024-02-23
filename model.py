@@ -7,6 +7,7 @@ from torchsummary import summary
 import matplotlib.pyplot as plt
 
 
+# defining the model
 class Net(nn.Module):
     #This defines the structure of the NN.
     def __init__(self):
@@ -29,6 +30,8 @@ class Net(nn.Module):
         return F.log_softmax(x, dim=1)
 
 
+# checking model output with the labels
+# getting correct prediction count
 def GetCorrectPredCount(pPrediction, pLabels):
   return pPrediction.argmax(dim=1).eq(pLabels).sum().item()
 
@@ -42,6 +45,7 @@ test_acc = []
 test_incorrect_pred = {'images': [], 'ground_truths': [], 'predicted_vals': []}
 
 
+#function to train the model
 def train(model, device, train_loader, optimizer, criterion):
   model.train()
   pbar = tqdm(train_loader)
@@ -72,7 +76,9 @@ def train(model, device, train_loader, optimizer, criterion):
 
   train_acc.append(100*correct/processed)
   train_losses.append(train_loss/len(train_loader))
+    
 
+# function to test the model
 def test(model, device, test_loader, criterion):
     model.eval()
 
@@ -98,6 +104,11 @@ def test(model, device, test_loader, criterion):
         100. * correct / len(test_loader.dataset)))
 
 
+# overall function that 
+# 1. calls the model
+# 2. trains the model
+# 3. tests the model
+# 4. shows the loss and accuracy plots
 def start_model_train_and_test(train_loader, test_loader):
   use_cuda = torch.cuda.is_available()
   device = torch.device("cuda" if use_cuda else "cpu")
